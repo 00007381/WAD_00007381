@@ -1,6 +1,6 @@
 import ActiveLink from "../utils/ActiveLink";
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <div className=" bg-purple-500 m-2 rounded-lg py-2 text-white">
@@ -31,4 +31,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AboutPage;

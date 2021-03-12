@@ -1,6 +1,6 @@
 import ActiveLink from "../utils/ActiveLink";
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <div className=" bg-purple-500 m-2 rounded-lg py-2 text-white">
@@ -22,7 +22,8 @@ const HomePage = () => {
         </div>
       </div>
       <div className="max-w-screen-lg px-2 mx-auto h-full w-full">
-        Main content where fans can explore between number of animated shows
+        FanFandom is the place where you get the description of the best
+        animated hsows and sitcoms
       </div>
       <div className="bg-purple-600 text-white h-32">
         <div className="max-w-screen-lg px-2 mx-auto">Footer part</div>
@@ -31,4 +32,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AboutPage;

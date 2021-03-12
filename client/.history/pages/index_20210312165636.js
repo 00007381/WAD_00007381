@@ -8,13 +8,10 @@ const HomePage = () => {
           <div className="flex justify-between">
             <h2 className="text-2xl">FanFandom</h2>
             <div className="flex space-x-10 text-xl">
-              <ActiveLink href="/" activeClassName="border-b-2 border-white">
+              <ActiveLink href="/">
                 <a className="hover:text-blue-300">Home</a>
               </ActiveLink>
-              <ActiveLink
-                href="/about"
-                activeClassName="border-b-2 border-white"
-              >
+              <ActiveLink href="/about">
                 <a className="hover:text-blue-300">About</a>
               </ActiveLink>
             </div>

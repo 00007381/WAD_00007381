@@ -11,10 +11,7 @@ const HomePage = () => {
               <ActiveLink href="/" activeClassName="border-b-2 border-white">
                 <a className="hover:text-blue-300">Home</a>
               </ActiveLink>
-              <ActiveLink
-                href="/about"
-                activeClassName="border-b-2 border-white"
-              >
+              <ActiveLink href="/about">
                 <a className="hover:text-blue-300">About</a>
               </ActiveLink>
             </div>
