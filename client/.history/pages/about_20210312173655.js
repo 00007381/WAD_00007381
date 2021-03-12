@@ -1,4 +1,4 @@
-import Layout from "../src/Layout";
+import ActiveLink from "../utils/ActiveLink";
 
 const AboutPage = () => {
   return (
