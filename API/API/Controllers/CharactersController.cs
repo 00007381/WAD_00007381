@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API.Models;
+using API_DAL;
+using API_DAL.Models;
+using API_DAL.Repositories;
 
 namespace API.Controllers
 {
@@ -13,32 +15,37 @@ namespace API.Controllers
     [ApiController]
     public class CharactersController : ControllerBase
     {
-        private readonly MyDBContext _context;
+        private readonly IRepository<Character> _characterRepo;
 
-        public CharactersController(MyDBContext context)
+        public CharactersController(IRepository<Character> characterRepo)
         {
-            _context = context;
+            _characterRepo = characterRepo;
         }
+
+ 
 
         // GET: api/Characters
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Character>>> GetCharacter()
         {
-            return await _context.Character.ToListAsync();
+            return await _characterRepo.GetAllAsync();
         }
 
         // GET: api/Characters/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(int id)
         {
-            var character = await _context.Character.FindAsync(id);
+            var show = await _characterRepo.GetByIdAsync(id);
+            //var show = await _context.Show
+            //    .Include(s => s.Characters)
+            //    .FirstOrDefaultAsync(i => i.Id == id);
 
-            if (character == null)
+            if (show == null)
             {
                 return NotFound();
             }
 
-            return character;
+            return show;
         }
 
         // PUT: api/Characters/5
@@ -50,26 +57,13 @@ namespace API.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(character).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
+                await _characterRepo.UpdateAsync(character);
+                return NoContent();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CharacterExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            return BadRequest(ModelState); // if incoming data is not valid sendinf the bad request
 
-            return NoContent();
         }
 
         // POST: api/Characters
@@ -77,31 +71,26 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Character>> PostCharacter(Character character)
         {
-            _context.Character.Add(character);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetCharacter", new { id = character.Id }, character);
+            if (ModelState.IsValid)
+            {
+                await _characterRepo.CreateAsync(character);
+                return CreatedAtAction("GetCharacter", new { id = character.Id }, character);
+            }
+            return BadRequest(ModelState); // if incoming data is not valid sendinf the bad request
         }
 
         // DELETE: api/Characters/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCharacter(int id)
         {
-            var character = await _context.Character.FindAsync(id);
-            if (character == null)
-            {
-                return NotFound();
-            }
-
-            _context.Character.Remove(character);
-            await _context.SaveChangesAsync();
+            await _characterRepo.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool CharacterExists(int id)
-        {
-            return _context.Character.Any(e => e.Id == id);
-        }
+        //private bool CharacterExists(int id)
+        //{
+        //    return _context.Character.Any(e => e.Id == id);
+        //}
     }
 }

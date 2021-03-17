@@ -1,0 +1,15 @@
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\bin\Debug\net5.0\API_DAL.deps.json
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\bin\Debug\net5.0\API_DAL.runtimeconfig.json
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\bin\Debug\net5.0\API_DAL.runtimeconfig.dev.json
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\bin\Debug\net5.0\API_DAL.dll
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\bin\Debug\net5.0\ref\API_DAL.dll
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\bin\Debug\net5.0\API_DAL.pdb
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.AssemblyInfoInputs.cache
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.AssemblyInfo.cs
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.csproj.CoreCompileInputs.cache
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.dll
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\ref\API_DAL.dll
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.pdb
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.genruntimeconfig.cache
+D:\Disk C\Desktop\Level5\Web\WAD_7381\API\API_DAL\obj\Debug\net5.0\API_DAL.csprojAssemblyReference.cache

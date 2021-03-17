@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API.Models;
+using API_DAL;
+using API_DAL.Models;
+using API_DAL.Repositories;
 
 namespace API.Controllers
 {
@@ -13,25 +15,27 @@ namespace API.Controllers
     [ApiController]
     public class ShowsController : ControllerBase
     {
-        private readonly MyDBContext _context;
+        private readonly IRepository<Show> _showRepo;
 
-        public ShowsController(MyDBContext context)
+        public ShowsController(IRepository<Show> showRepo)
         {
-            _context = context;
+            _showRepo = showRepo;
         }
-
         // GET: api/Shows
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Show>>> GetShow()
         {
-            return await _context.Show.ToListAsync();
+            return await _showRepo.GetAllAsync();
         }
 
         // GET: api/Shows/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Show>> GetShow(int id)
         {
-            var show = await _context.Show.FindAsync(id);
+            var show = await _showRepo.GetByIdAsync(id);
+            //var show = await _context.Show
+            //    .Include(s => s.Characters)
+            //    .FirstOrDefaultAsync(i => i.Id == id);
 
             if (show == null)
             {
@@ -50,26 +54,12 @@ namespace API.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(show).State = EntityState.Modified;
-
-            try
+            if (ModelState.IsValid)
             {
-                await _context.SaveChangesAsync();
+                await _showRepo.UpdateAsync(show);
+                return NoContent();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ShowExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return BadRequest(ModelState); // if incoming data is not valid sendinf the bad request
         }
 
         // POST: api/Shows
@@ -77,31 +67,28 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Show>> PostShow(Show show)
         {
-            _context.Show.Add(show);
-            await _context.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+                await _showRepo.CreateAsync(show);
 
-            return CreatedAtAction("GetShow", new { id = show.Id }, show);
+                return CreatedAtAction("GetShow", new { id = show.Id }, show);
+            }
+            return BadRequest(ModelState); // if incoming data is not valid sendinf the bad request
+           
         }
 
         // DELETE: api/Shows/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteShow(int id)
         {
-            var show = await _context.Show.FindAsync(id);
-            if (show == null)
-            {
-                return NotFound();
-            }
-
-            _context.Show.Remove(show);
-            await _context.SaveChangesAsync();
+            await _showRepo.DeleteAsync(id);
 
             return NoContent();
         }
 
-        private bool ShowExists(int id)
-        {
-            return _context.Show.Any(e => e.Id == id);
-        }
+        //private bool ShowExists(int id)
+        //{
+        //    return _context.Show.Any(e => e.Id == id);
+        //}
     }
 }

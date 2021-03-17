@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using API.Models;
+using API_DAL;
+using API_DAL.Models;
+using API_DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,8 +30,18 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Registering the implementation of the interface
+            services.AddScoped<IRepository<Show>, ShowRepo>(); // For Irepositoryshow that we used in showController we are specifying to use ShowRepo
+            services.AddScoped<IRepository<Character>, CharacterRepo>();
+
             services.AddDbContext<MyDBContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("FandomAPI")));
+
+            // Not supported in new System.Text.JSON, maybe need to install NewtonSoft but even thoiugh there are still few problems
+            //services.AddMvc()
+            //    .AddJsonOptions(
+            //        options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            //    );
 
             services.AddControllers();
         }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API_DAL.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace API.Models
+namespace API_DAL
 {
     public class MyDBContext : DbContext
     {
