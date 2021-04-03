@@ -1,0 +1,1 @@
+const DeleteButton = (props) => {};

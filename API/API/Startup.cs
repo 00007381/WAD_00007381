@@ -42,6 +42,10 @@ namespace API
             //    .AddJsonOptions(
             //        options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             //    );
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyCorsPolicy", policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+            });
 
             services.AddControllers();
         }
@@ -57,6 +61,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAnyCorsPolicy");
 
             app.UseAuthorization();
 
