@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using API_DAL;
 using API_DAL.Models;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace API
 {
@@ -38,10 +40,9 @@ namespace API
              options.UseSqlServer(Configuration.GetConnectionString("FandomAPI")));
 
             // Not supported in new System.Text.JSON, maybe need to install NewtonSoft but even thoiugh there are still few problems
-            //services.AddMvc()
-            //    .AddJsonOptions(
-            //        options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            //    );
+            services.AddMvc().AddJsonOptions(options => {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAnyCorsPolicy", policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());

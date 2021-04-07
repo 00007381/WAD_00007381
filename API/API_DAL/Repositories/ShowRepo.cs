@@ -39,7 +39,8 @@ namespace API_DAL.Repositories
 
         public async Task<Show> GetByIdAsync(int id)
         {
-            var show = await _context.Show.FindAsync(id);
+            var show = await _context.Show.Include(s => s.Characters).FirstOrDefaultAsync(s => s.Id == id);
+            
             return show;
         }
 

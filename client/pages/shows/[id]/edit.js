@@ -91,7 +91,7 @@ const EditPage = () => {
   return (
     <Layout>
       <h1 ref={scrollRef} className="text-3xl mt-6 font-semibold text-gray-700">
-        Form for adding a new Show
+        Form for editing the existant Show
       </h1>
 
       {errorState && (

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "FR0JOhsSV8cIPugzBChwOw5bYytr1JbrkZPwVv0h9O9YxsIDooXbfGhyhXYjpPUi5VzMoLSX+ePpfnJfaPAKDw==",
+  "dgSpecHash": "EJ6mUm+j59Z5ocOF9KRuqZKp29e8d35b9Uc/mxA+QBjD+4RAOH8zn1ugnLXY2OJ7JTak9mcHJPkxfHnfkqVuVw==",
   "success": true,
   "projectFilePath": "D:\\Disk C\\Desktop\\Level5\\Web\\WAD_7381\\API\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -60,7 +60,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.visualstudio.web.codegenerators.mvc\\5.0.2\\microsoft.visualstudio.web.codegenerators.mvc.5.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
